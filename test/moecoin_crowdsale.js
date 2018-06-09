@@ -116,14 +116,14 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
   it('should have different rate over time', async function () {
     await increaseTimeTo(this.openingTime);
     const expect = RATE;
-    const actual = this.crowdsale.getCurrentRate();
+    const actual = await this.crowdsale.getCurrentRate();
     await actual.should.be.bignumber.equal(expect);
   });
     
   it('should have different rate over 3 days', async function () {
     await increaseTimeTo(this.openingTime + duration.days(3));
     const expect = RATE.sub(3);
-    const actual = this.crowdsale.getCurrentRate();
+    const actual = await this.crowdsale.getCurrentRate();
     await actual.should.be.bignumber.equal(expect);
   });
 });
