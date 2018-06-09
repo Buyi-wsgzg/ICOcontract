@@ -1,0 +1,17 @@
+{
+  "openingTime": 900000,
+  "closingTime": 1000000,
+  "cap": 15000,
+  "tokenCap": 150000,
+  "goal": 1000,
+  "rate": {
+    "base": 1000000,
+    "initial": 1000000,
+    "final": 100000
+  },
+  "whiteList": [
+    "0x9f874e3dd3b765430682a62649933acdaae1d424",
+    "0xcfc0545d7e6f2ce0e815a7120aecd485ea466f39",
+    "0xc28b49ab01335f2ccd17146f1cd7d6607ef984e1"
+  ]
+}

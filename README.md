@@ -1,0 +1,1 @@
+# MoeCoin ICOcontract
