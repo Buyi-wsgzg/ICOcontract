@@ -19,7 +19,8 @@
     "compile": "rm -rf ./build/* && truffle compile",
     "clean": "rm -rf ./build/* && yarn truffle networks --clean",
     "rpc": "yarn run testrpc -a 3 -i 10 -u 0 -u 1 -u 2",
-    "deploy": "yarn run clean && yarn truffle compile && truffle deploy --network development"
+    "deploy": "yarn run clean && yarn truffle compile && truffle deploy --network development",
+    "dev": "lite-server"
   },
   "bugs": {
     "url": "https://github.com/MoeCoinOne/ICOcontract/issues"
@@ -50,6 +51,7 @@
     "ethjs-abi": "^0.2.1",
     "fs": "0.0.1-security",
     "ganache-cli": "^6.1.0",
+    "lite-server": "^2.3.0",
     "moment": "^2.22.2",
     "solgraph": "^0.2.6",
     "solidity-coverage": "^0.5.4",
