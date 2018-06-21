@@ -1,7 +1,7 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.21;
 
-import 'zeppelin-solidity/contracts/crowdsale/Crowdsale.sol';
-import 'zeppelin-solidity/contracts/math/SafeMath.sol';
+import "zeppelin-solidity/contracts/crowdsale/Crowdsale.sol";
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
 
 
 /**
@@ -37,7 +37,7 @@ contract WhitelistedCrowdsale is Crowdsale {
   }
 
   // @return true if address is whitelisted member.
-  function isWhiteListMember(address _member) public constant returns (bool) {
+  function isWhiteListMember(address _member) public view returns (bool) {
     return whiteList[_member] == true;
   }
 }

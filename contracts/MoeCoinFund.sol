@@ -1,7 +1,7 @@
 pragma solidity ^0.4.21;
 
 
-import 'zeppelin-solidity/contracts/ownership/Heritable.sol';
+import "zeppelin-solidity/contracts/ownership/Heritable.sol";
 
 contract MoeCoinFund is Heritable {
   event Sent(address indexed payee, uint256 amount, uint256 balance);

@@ -1,15 +1,15 @@
 pragma solidity ^0.4.21;
 
 
-import 'zeppelin-solidity/contracts/token/ERC20/MintableToken.sol';
-import 'zeppelin-solidity/contracts/token/ERC20/BurnableToken.sol';
+import "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol";
+import "zeppelin-solidity/contracts/token/ERC20/BurnableToken.sol";
 
 
 contract MoeCoin is MintableToken, BurnableToken {
 
-  string public constant name = 'MoeCoin';
+  string public constant name = "MoeCoin";
 
-  string public constant symbol = 'MOE';
+  string public constant symbol = "MOE";
 
   // same as ether. (1ether=1wei * (10 ** 18))
   uint public constant decimals = 18;
