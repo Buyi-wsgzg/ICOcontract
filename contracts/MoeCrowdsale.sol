@@ -44,8 +44,8 @@ contract MoeCrowdsale is RefundableCrowdsale, MintedCrowdsale, WhitelistedCrowds
   function getCurrentRate() public view returns (uint256) {
     // `now` is the alias of `block.timestamp`
     // - https://github.com/OpenZeppelin/zeppelin-solidity/issues/350
-    // solium-disable-next-line security/np-block-members
     //uint256 timeTick = block.timestamp.sub(openingTime);
+    // solium-disable-next-line security/np-block-members
     uint256 timeTick = now.sub(openingTime);
     uint256 co = timeTick.div(1 days);
     return rate.sub(co.mul(RATE_PER_ONEDAY));
