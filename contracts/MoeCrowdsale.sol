@@ -1,7 +1,7 @@
 pragma solidity ^0.4.21;
 
 
-import 'zeppelin-solidity/contracts/crowdsale/validation/CappedCrowdsale.sol';
+//import 'zeppelin-solidity/contracts/crowdsale/validation/CappedCrowdsale.sol';
 //import 'zeppelin-solidity/contracts/crowdsale/validation/WhitelistedCrowdsale.sol';
 import 'zeppelin-solidity/contracts/crowdsale/price/IncreasingPriceCrowdsale.sol';
 import 'zeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol';
@@ -14,10 +14,7 @@ import './MoeCoin.sol';
 /**
  * The Crowdsale contract of MoeCoin project.
 */
-contract MoeCrowdsale is CappedCrowdsale, RefundableCrowdsale, MintedCrowdsale, WhitelistedCrowdsale {
-
-  // The cap amount of MoeCoin tokens.
-  uint256 public tokenCap;
+contract MoeCrowdsale is RefundableCrowdsale, MintedCrowdsale, WhitelistedCrowdsale {
 
   /*
   * Token exchange rates of ETH and MOECOIN.
@@ -30,18 +27,14 @@ contract MoeCrowdsale is CappedCrowdsale, RefundableCrowdsale, MintedCrowdsale, 
     uint256 _baseRate,
     address _wallet,
     MintableToken _token,
-    uint256 _cap,
-    uint256 _tokenCap,
     uint256 _goal,
     address[] _whiteList
   )
   Crowdsale(_baseRate, _wallet, _token)
-  CappedCrowdsale(_cap)
   RefundableCrowdsale(_goal)
   WhitelistedCrowdsale(_whiteList)
   TimedCrowdsale(_openingTime, _closingTime)
   {
-    tokenCap = _tokenCap;
   }
 
   // Custom rate.

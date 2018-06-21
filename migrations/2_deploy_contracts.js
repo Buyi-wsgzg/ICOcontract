@@ -13,10 +13,8 @@ function moecoin(n) {
 }
 
 module.exports = function(deployer, network, accounts) {
-  const actualCap = web3.toWei(crowdsaleParams.cap, 'ether');
   const openingTime = web3.eth.getBlock('latest').timestamp + 2;
   const closingTime = openingTime + 86400 * 20; 
-  const actualTokenCap = moecoin(crowdsaleParams.tokenCap);
   const actualGoal = web3.toWei(crowdsaleParams.goal, 'ether');
   //const wallet = deployer.deploy(MoeCoinFund, fundParams.owners, fundParams.required);
   //const token = deployer.deploy(MoeCoin);
@@ -48,7 +46,6 @@ module.exports = function(deployer, network, accounts) {
     deployer.deploy(MoeCoinFund, openingTime).then(() =>
       // Set MoeCoinFund address to wallet of MoeCrowdsale.
       deployer.deploy(MoeCrowdsale, openingTime, closingTime, rate.base, 
-        MoeCoinFund.address, MoeCoin.address, actualCap, actualTokenCap,
-        actualGoal, crowdsaleParams.whiteList
+        MoeCoinFund.address, MoeCoin.address, actualGoal, crowdsaleParams.whiteList
   )));
 };

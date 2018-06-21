@@ -22,8 +22,6 @@ require('chai')
 export const MoeCoin = artifacts.require('MoeCoin.sol');
 export const MoeCoinFund = artifacts.require('MoeCoinFund.sol');
 export const MoeCrowdsale = artifacts.require('MoeCrowdsale.sol');
-export const cap = crowdsaleParams.cap;
-export const tokenCap = crowdsaleParams.tokenCap;
 export const rate = crowdsaleParams.rate;
 export const goal = new BigNumber(crowdsaleParams.goal);
 export const whiteList = crowdsaleParams.whiteList;

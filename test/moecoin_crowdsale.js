@@ -24,8 +24,6 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
   //const INITIAL_RATE = new BigNumber(10);
   //const FINAL_RATE = new BigNumber(15);
   const GOAL = ether(10);
-  const CAP = ether(20);
-  const capTokenCap = ether(300);
 
   before(async function () {
     await advanceBlock();
@@ -46,8 +44,6 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
         //FINAL_RATE,
         this.wallet.address, 
         this.token.address, 
-        CAP, 
-        capTokenCap, 
         GOAL,
         whiteList 
     );
@@ -68,7 +64,6 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
     //const finalRate = await this.crowdsale.finalRate();
     const walletAddress = await this.crowdsale.wallet();
     const goal = await this.crowdsale.goal();
-    const cap = await this.crowdsale.cap();
 
     openingTime.should.be.bignumber.equal(this.openingTime);
     closingTime.should.be.bignumber.equal(this.closingTime);
@@ -77,7 +72,6 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
     //finalRate.should.be.bignumber.equal(FINAL_RATE);
     walletAddress.should.be.bignumber.equal(this.wallet.address);
     goal.should.be.bignumber.equal(GOAL);
-    cap.should.be.bignumber.equal(CAP);
   });
 
   it('should be token owner', async function () {
@@ -107,11 +101,11 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
     await this.crowdsale.buyTokens(investor, { value : ether(1), from: investor }).should.be.rejectedWith(EVMRevert);
   });
 
-  it('should reject payments over cap', async function () {
-    await increaseTimeTo(this.openingTime);
-    await this.crowdsale.send(CAP);
-    await this.crowdsale.send(1).should.be.rejectedWith(EVMRevert);
-  });
+  //it('should reject payments over cap', async function () {
+  //  await increaseTimeTo(this.openingTime);
+  //  await this.crowdsale.send(CAP);
+  //  await this.crowdsale.send(1).should.be.rejectedWith(EVMRevert);
+  //});
 
   it('should have different rate over time', async function () {
     await increaseTimeTo(this.openingTime);

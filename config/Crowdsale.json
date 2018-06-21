@@ -1,8 +1,6 @@
 {
   "openingTime": 900000,
   "closingTime": 1000000,
-  "cap": 15000,
-  "tokenCap": 150000,
   "goal": 1000,
   "rate": {
     "base": 1000000,
