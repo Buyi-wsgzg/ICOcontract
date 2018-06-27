@@ -21,6 +21,8 @@ contract MoeCrowdsale is RefundableCrowdsale, MintedCrowdsale, WhitelistedCrowds
   */
   uint256 constant RATE_PER_ONEDAY = 1;
 
+  event ReceivedEther(address purchaser, uint256 amount, uint256 raised);
+
   constructor(
     uint256 _openingTime,
     uint256 _closingTime,
@@ -44,11 +46,31 @@ contract MoeCrowdsale is RefundableCrowdsale, MintedCrowdsale, WhitelistedCrowds
   function getCurrentRate() public view returns (uint256) {
     // `now` is the alias of `block.timestamp`
     // - https://github.com/OpenZeppelin/zeppelin-solidity/issues/350
-    //uint256 timeTick = block.timestamp.sub(openingTime);
     // solium-disable-next-line security/np-block-members
+    //uint256 timeTick = block.timestamp.sub(openingTime);
     uint256 timeTick = now.sub(openingTime);
     uint256 co = timeTick.div(1 days);
     return rate.sub(co.mul(RATE_PER_ONEDAY));
+  }
+
+  /*
+   * @dev Investor invest MoeCoin by paying ether in wei. 
+   * @param _value The value in wei that the investor pays ether.
+   * @return The current MoeCoin ICO raised amount.
+   */
+  function investorPayEther(address _purchaser, uint256 _value) public payable returns (uint256) {
+    //require(msg.value != 0);
+    //require(msg.sender != address(0));
+    //uint256 weiAmount = msg.value;
+    //
+    //weiRaised = weiRaised.add(weiAmount);
+    //emit ReceivedEther(msg.sender, weiAmount, weiRaised);
+    require(_purchaser != address(0));
+    require(_value != 0);
+    
+    weiRaised = weiRaised.add(_value);
+    emit ReceivedEther(_purchaser, _value, weiRaised);
+    return weiRaised; 
   }
 
   /**

@@ -1,6 +1,6 @@
 {
-  "openingTime": 900000,
-  "closingTime": 1000000,
+  "openingTime": 1530374400,
+  "closingTime": 1533052799,
   "goal": 1000,
   "rate": {
     "base": 1000000,
@@ -8,8 +8,8 @@
     "final": 100000
   },
   "whiteList": [
-    "0x9f874e3dd3b765430682a62649933acdaae1d424",
-    "0xcfc0545d7e6f2ce0e815a7120aecd485ea466f39",
-    "0xc28b49ab01335f2ccd17146f1cd7d6607ef984e1"
+    "0xe851F9e470504D470243936c724C2fC95b657984",
+    "0x0CDA52fBc503a7D5BA892B65e3A80E5701F70036",
+    "0xEF6Ad173D2cc6FE3f5d67Bf4305c6B0797b3BCEB"
   ]
 }

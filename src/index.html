@@ -16,20 +16,23 @@
             <hr/>
             <br/>
         </div>
+        <div id="loader">
+          <p class="text-center">Loading...</p>
+        </div>
         <div id="content" class="text-center" style="display: none;">
           <p>
             Introducing "MoeCoin Token" (MOE)!
-            Token price is <span class="token-price"></span> Ether. You currently have <span class="moecoin-balance"></span>&nbsp;MOE.
+            MoeCoin ICO opening time is <span class="openingTime"></span>, closing time is <span class="closingTime"></span>.
           </p>
           <br/>
-          <!--<form onSubmit="App.buyTokens(); return false;" role="form"> -->
-          <form role="form">
+          <!--<form onSubmit="App.Invest(); return false;" role="form"> -->
+          <form onSubmit="App.Invest(); return false;" role="form">
             <div class="form-group">
               <div class="input-group">
-                <input id="numberOfTokens" class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
+                <input id="numberOfEthers" class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
                 </input>
                 <span class="input-group-btn">
-                  <button type="submit" class="btn btn-primary btn-lg">Buy Tokens</button>
+                  <button type="submit" class="btn btn-primary btn-lg">Invest</button>
                 </span>
               </div>
             </div>
@@ -39,7 +42,7 @@
               <div id="progress" class="progress-bar progress-bar-striped active" aria-valuemin="0" aria-valuemax="100">
               </div>
             </div>
-          <p><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</p>
+          <p><span class="invest-ether"></span> / <span class="soft-cap"></span> soft CAP(Ethers)</p>
           <hr>
           <p id="accountAddress"></p>
         </div>
@@ -49,7 +52,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
-    <script src="js/truffle-contract.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

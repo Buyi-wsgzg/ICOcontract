@@ -35,7 +35,7 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
     this.afterClosingTime = this.closingTime + duration.seconds(1);
 
     this.token = await MoeCoin.new({ from : owner });
-    this.wallet = await MoeCoinFund.new(this.openingTime, { from : owner });
+    this.wallet = await MoeCoinFund.new(owners, required);
     this.crowdsale = await MoeCrowdsale.new(
         this.openingTime, 
         this.closingTime, 
@@ -49,7 +49,7 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
     );
 
     await this.token.transferOwnership(this.crowdsale.address);
-    await this.wallet.transferOwnership(this.crowdsale.address);
+    //await this.wallet.transferOwnership(this.crowdsale.address);
   });
   
   it('should create crowdsale with correct parameter', async function () {
@@ -106,6 +106,11 @@ contract('MoeCrowdsale', function ([owner, wallet, investor]) {
   //  await this.crowdsale.send(CAP);
   //  await this.crowdsale.send(1).should.be.rejectedWith(EVMRevert);
   //});
+  it('should can pay ether to ico', async function () {
+    await increaseTimeTo(this.openingTime);
+    await this.crowdsale.investorPayEther(investor, ether(1), { value: ether(1), from: investor }).should.be.fulfilled;
+    (await this.crowdsale.weiRaised()).should.be.bignumber.equal(new BigNumber(1 * 10 ** 18));
+  });
 
   it('should have different rate over time', async function () {
     await increaseTimeTo(this.openingTime);
